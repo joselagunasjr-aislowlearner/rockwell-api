@@ -38,10 +38,3 @@
     "@types/bcrypt": "^5.0.2"
   }
 }
-```
-
-Save (Ctrl+S), close Notepad, then run:
-```
-git add .
-git commit -m "Fix build"
-git push

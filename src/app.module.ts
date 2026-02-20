@@ -9,7 +9,6 @@ import { VisitsModule } from './modules/visits/visits.module';
 import { DevicesModule } from './modules/devices/devices.module';
 import { LeadsModule } from './modules/leads/leads.module';
 
-// Entities
 import { User } from './modules/users/user.entity';
 import { Home } from './modules/homes/home.entity';
 import { HomeMembership } from './modules/homes/home-membership.entity';
@@ -22,6 +21,8 @@ import { VisitReport } from './modules/visits/visit-report.entity';
 import { AuditLog } from './modules/audit/audit-log.entity';
 import { Lead } from './modules/leads/lead.entity';
 
+console.log('DATABASE_URL:', process.env.DATABASE_URL?.replace(/:[^:@]+@/, ':***@'));
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -31,9 +32,11 @@ import { Lead } from './modules/leads/lead.entity';
         User, Home, HomeMembership, Resident,
         Device, SensorEvent, Alert, Note, VisitReport, AuditLog, Lead,
       ],
-      synchronize: process.env.NODE_ENV !== 'production',
+      synchronize: true,
       ssl: false,
-      logging: process.env.NODE_ENV !== 'production',
+      logging: true,
+      retryAttempts: 3,
+      retryDelay: 3000,
     }),
     AuditModule,
     HomesModule,
@@ -45,5 +48,3 @@ import { Lead } from './modules/leads/lead.entity';
   ],
 })
 export class AppModule {}
-
-

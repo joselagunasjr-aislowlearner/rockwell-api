@@ -32,9 +32,7 @@ import { Lead } from './modules/leads/lead.entity';
         Device, SensorEvent, Alert, Note, VisitReport, AuditLog, Lead,
       ],
       synchronize: process.env.NODE_ENV !== 'production',
-      ssl: process.env.DATABASE_URL?.includes('railway')
-        ? { rejectUnauthorized: false }
-        : undefined,
+      ssl: false,
       logging: process.env.NODE_ENV !== 'production',
     }),
     AuditModule,
@@ -47,4 +45,5 @@ import { Lead } from './modules/leads/lead.entity';
   ],
 })
 export class AppModule {}
+
 

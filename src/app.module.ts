@@ -7,6 +7,7 @@ import { AlertsModule } from './modules/alerts/alerts.module';
 import { NotesModule } from './modules/notes/notes.module';
 import { VisitsModule } from './modules/visits/visits.module';
 import { DevicesModule } from './modules/devices/devices.module';
+import { LeadsModule } from './modules/leads/leads.module';
 
 // Entities
 import { User } from './modules/users/user.entity';
@@ -19,6 +20,7 @@ import { Alert } from './modules/alerts/alert.entity';
 import { Note } from './modules/notes/note.entity';
 import { VisitReport } from './modules/visits/visit-report.entity';
 import { AuditLog } from './modules/audit/audit-log.entity';
+import { Lead } from './modules/leads/lead.entity';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { AuditLog } from './modules/audit/audit-log.entity';
       url: process.env.DATABASE_URL,
       entities: [
         User, Home, HomeMembership, Resident,
-        Device, SensorEvent, Alert, Note, VisitReport, AuditLog,
+        Device, SensorEvent, Alert, Note, VisitReport, AuditLog, Lead,
       ],
       synchronize: process.env.NODE_ENV !== 'production',
       ssl: process.env.DATABASE_URL?.includes('railway')
@@ -41,6 +43,8 @@ import { AuditLog } from './modules/audit/audit-log.entity';
     NotesModule,
     VisitsModule,
     DevicesModule,
+    LeadsModule,
   ],
 })
 export class AppModule {}
+

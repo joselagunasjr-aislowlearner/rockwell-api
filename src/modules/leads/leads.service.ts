@@ -87,7 +87,7 @@ export class LeadsService {
     if (result.success) {
       await this.repo.update(lead.id, {
         syncedToM360: true,
-        m360ContactId: result.zapierRequestId || null,
+        m360ContactId: result.zapierRequestId || undefined,
       });
       this.logger.log(`Lead ${lead.id} synced to M360`);
     } else {

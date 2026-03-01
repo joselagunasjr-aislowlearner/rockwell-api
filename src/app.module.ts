@@ -11,6 +11,7 @@ import { LeadsModule } from './modules/leads/leads.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ClientsModule } from './modules/clients/clients.module';
 import { TwilioModule } from './modules/twilio/twilio.module';
+import { MessagesModule } from './modules/messages/messages.module';
 
 import { User } from './modules/users/user.entity';
 import { Home } from './modules/homes/home.entity';
@@ -24,7 +25,9 @@ import { VisitReport } from './modules/visits/visit-report.entity';
 import { AuditLog } from './modules/audit/audit-log.entity';
 import { Lead } from './modules/leads/lead.entity';
 import { Client } from './modules/clients/entities/client.entity';
+import { Message } from './modules/messages/entities/message.entity';
 import { CreateClientsTable1740700800000 } from './migrations/1740700800000-CreateClientsTable';
+import { CreateMessagesTable1741000000000 } from './migrations/1741000000000-CreateMessagesTable';
 
 console.log('DATABASE_URL:', process.env.DATABASE_URL?.replace(/:[^:@]+@/, ':***@'));
 
@@ -37,8 +40,9 @@ console.log('DATABASE_URL:', process.env.DATABASE_URL?.replace(/:[^:@]+@/, ':***
         User, Home, HomeMembership, Resident,
         Device, SensorEvent, Alert, Note, VisitReport, AuditLog, Lead,
         Client,
+        Message,
       ],
-      migrations: [CreateClientsTable1740700800000],
+      migrations: [CreateClientsTable1740700800000, CreateMessagesTable1741000000000],
       migrationsRun: true,
       synchronize: false,
       ssl: false,
@@ -55,6 +59,7 @@ console.log('DATABASE_URL:', process.env.DATABASE_URL?.replace(/:[^:@]+@/, ':***
     LeadsModule,
     TwilioModule,
     AuthModule,
+    MessagesModule,
     ClientsModule,
   ],
 })

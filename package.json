@@ -7,7 +7,9 @@
     "build": "npx nest build",
     "start": "node dist/main",
     "start:dev": "npx nest start --watch",
-    "seed": "ts-node src/seeds/seed.ts"
+    "seed": "ts-node src/seeds/seed.ts",
+    "migration:run": "npx typeorm migration:run -d src/data-source.ts",
+    "migration:revert": "npx typeorm migration:revert -d src/data-source.ts"
   },
   "dependencies": {
     "@nestjs/cli": "^10.3.0",
@@ -28,6 +30,7 @@
     "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
     "ts-node": "^10.9.2",
+    "twilio": "^5.12.2",
     "typeorm": "^0.3.19",
     "typescript": "^5.3.3",
     "uuid": "^9.0.0"

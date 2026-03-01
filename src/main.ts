@@ -4,6 +4,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  const requiredEnvVars = ['JWT_SECRET', 'DATABASE_URL', 'TWILIO_PHONE_NUMBER'];
+  for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar]) {
+      throw new Error(`Missing required environment variable: ${envVar}`);
+    }
+  }
+
   const app = await NestFactory.create(AppModule);
 
   // CORS — allow portal and member app
